@@ -17,8 +17,6 @@ void *multiplicaMatriz(void *arg)
 
   for (int i = count2 * QT_MATRIZ; i < (count2 + 1) * QT_MATRIZ; i++)
   {
-    printf("\nTeste 1: %d", count2 * QT_MATRIZ);
-    printf("\nTeste 2: %d", (count + 1) * QT_MATRIZ);
     for (int j = 0; j < QT_MATRIZ; j++)
     {
       for (int k = 0; k < QT_MATRIZ; k++)
