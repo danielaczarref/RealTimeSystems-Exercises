@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <pthread.h>
+#include <time.h>
 
 #define QT_MATRIZ 4
 #define QT_THREAD 16
@@ -29,6 +30,8 @@ void *multiplicaMatriz(void *arg)
 
 int main()
 {
+  clock_t tInicio, tFim, t;
+  tInicio = clock();
   for (int i = 0; i < QT_MATRIZ; i++)
   {
     for (int j = 0; j < QT_MATRIZ; j++)
@@ -72,4 +75,7 @@ int main()
       printf("%d \n", resMatriz[i][j]);
     }
   }
+  tFim = clock();
+  t = tFim - tInicio;
+  printf("Ticks gastos: %d. Tempo gasto: %Lf s\n", (int)t, (long double)(t / CLOCKS_PER_SEC));
 }

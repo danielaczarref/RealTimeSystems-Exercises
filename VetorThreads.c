@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <pthread.h>
+#include <time.h>
 
 #define TAM_VETOR 100
 #define QT_THREAD 4
@@ -26,6 +27,8 @@ void *buscaVetor(void *arg)
 
 int main()
 {
+  clock_t tInicio, tFim, t;
+  tInicio = clock();
   for (int i = 0; i < TAM_VETOR; i++)
   {
     vetor[i] = rand() % 100;
@@ -44,6 +47,9 @@ int main()
     int *p;
     pthread_create(&threads[i], NULL, buscaVetor, (void *)(p));
   }
+  tFim = clock();
+  t = tFim - tInicio;
 
-  printf("\nQuantidade de vezes que o número apareceu: %d \n", qtde);
+  printf("\nQuantidade de vezes que o número 27 apareceu: %d \n", qtde);
+  printf("Ticks gastos: %d. Tempo gasto: %Lf s\n", (int)t, (long double)(t / CLOCKS_PER_SEC));
 }
